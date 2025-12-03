@@ -688,6 +688,7 @@ body {
         font-size: 0.9rem;
     }
 }
+
 /* =======================
    FLOATING WHATSAPP BUTTON
    ======================= */
@@ -699,15 +700,19 @@ body {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border-radius: 50px;
-    padding: 15px 25px;
+    padding: 18px 30px;
+    /* Increased padding */
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    /* Increased gap */
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    font-weight: 700;
+    /* Bolder text */
+    font-size: 1.1rem;
+    /* Larger font */
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
     z-index: 1000;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: pulse 2s infinite ease-in-out;
@@ -715,7 +720,7 @@ body {
 
 .whatsapp-float:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.7);
     animation: none;
 }
 
@@ -724,8 +729,10 @@ body {
 }
 
 .whatsapp-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    /* Larger icon container */
+    height: 40px;
+    /* Larger icon container */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -741,15 +748,19 @@ body {
 .whatsapp-text {
     white-space: nowrap;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
 }
 
 /* Pulse animation */
 @keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+
+    0%,
+    100% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
     }
+
     50% {
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        box-shadow: 0 8px 35px rgba(37, 211, 102, 0.8);
     }
 }
 
@@ -758,14 +769,14 @@ body {
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-        gap: 10px;
+        padding: 15px 25px;
+        font-size: 1rem;
+        gap: 12px;
     }
-    
+
     .whatsapp-icon {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
     }
 }
 
@@ -774,12 +785,19 @@ body {
     .whatsapp-text {
         display: none;
     }
-    
+
     .whatsapp-float {
         padding: 15px;
         border-radius: 50%;
-        width: 60px;
-        height: 60px;
+        width: 65px;
+        /* Larger mobile button */
+        height: 65px;
+        /* Larger mobile button */
         justify-content: center;
+    }
+
+    .whatsapp-icon {
+        width: 35px;
+        height: 35px;
     }
 }
