@@ -1,6 +1,10 @@
 // WhatsApp Group Link
 const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/CMVS4Jjc5xP6UAL9SMgfJS';
 
+// Google Sheets Web App URL - UPDATE THIS AFTER DEPLOYING APPS SCRIPT
+// Instructions: Replace with your Google Apps Script Web App URL after setup
+const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
 // Get form elements
 const form = document.getElementById('registrationForm');
 const submitBtn = document.getElementById('submitBtn');
@@ -8,44 +12,83 @@ const btnText = submitBtn.querySelector('.btn-text');
 const btnLoader = submitBtn.querySelector('.btn-loader');
 
 // Form submission handler
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     // Get form values
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    
+
     // Validate form
     if (!name || !email || !phone) {
         alert('Sila lengkapkan semua maklumat!');
         return;
     }
-    
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Format email tidak sah!');
         return;
     }
-    
+
     // Show loading state
     showLoading();
-    
-    // Store data in localStorage (optional - for record keeping)
-    storeUserData(name, email, phone);
-    
-    // Simulate processing time
-    setTimeout(() => {
-        // Show success message
-        showSuccessMessage(name);
-        
-        // Redirect to WhatsApp group after 2 seconds
-        setTimeout(() => {
-            redirectToWhatsApp();
-        }, 2000);
-    }, 1000);
+
+    // Submit to Google Sheets first, then redirect to WhatsApp
+    submitToGoogleSheets(name, email, phone);
 });
+
+// Submit data to Google Sheets
+function submitToGoogleSheets(name, email, phone) {
+    const formData = {
+        name: name,
+        email: email,
+        phone: phone,
+        timestamp: new Date().toLocaleString('ms-MY', { timeZone: 'Asia/Kuala_Lumpur' })
+    };
+
+    // Store locally as backup
+    storeUserData(name, email, phone);
+
+    // Check if Google Sheets URL is configured
+    if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        console.warn('⚠️ Google Sheets URL not configured. Data saved locally only.');
+        // Skip Google Sheets submission and proceed to success
+        setTimeout(() => {
+            showSuccessMessage(name);
+            setTimeout(() => redirectToWhatsApp(), 2000);
+        }, 1000);
+        return;
+    }
+
+    // Submit to Google Sheets
+    fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(() => {
+            console.log('✅ Data submitted to Google Sheets successfully');
+            // Show success message after submission
+            setTimeout(() => {
+                showSuccessMessage(name);
+                setTimeout(() => redirectToWhatsApp(), 2000);
+            }, 500);
+        })
+        .catch((error) => {
+            console.error('❌ Error submitting to Google Sheets:', error);
+            // Still show success and redirect even if Google Sheets fails (data is in localStorage)
+            setTimeout(() => {
+                showSuccessMessage(name);
+                setTimeout(() => redirectToWhatsApp(), 2000);
+            }, 500);
+        });
+}
 
 // Show loading state
 function showLoading() {
@@ -61,7 +104,7 @@ function hideLoading() {
     btnLoader.style.display = 'none';
 }
 
-// Store user data
+// Store user data in localStorage
 function storeUserData(name, email, phone) {
     const userData = {
         name: name,
@@ -69,23 +112,23 @@ function storeUserData(name, email, phone) {
         phone: phone,
         timestamp: new Date().toISOString()
     };
-    
+
     // Get existing data
     let registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
-    
+
     // Add new registration
     registrations.push(userData);
-    
+
     // Store back to localStorage
     localStorage.setItem('registrations', JSON.stringify(registrations));
-    
-    console.log('User registered:', userData);
+
+    console.log('💾 User data saved locally:', userData);
 }
 
 // Show success message
 function showSuccessMessage(name) {
     hideLoading();
-    
+
     // Create success overlay
     const overlay = document.createElement('div');
     overlay.style.cssText = `
@@ -101,7 +144,7 @@ function showSuccessMessage(name) {
         z-index: 9999;
         animation: fadeIn 0.3s ease-out;
     `;
-    
+
     // Create success message
     const messageBox = document.createElement('div');
     messageBox.style.cssText = `
@@ -114,17 +157,17 @@ function showSuccessMessage(name) {
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         animation: slideUp 0.4s ease-out;
     `;
-    
+
     messageBox.innerHTML = `
         <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
         <h2 style="color: white; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Tahniah ${name}!</h2>
         <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 1rem;">Pendaftaran anda berjaya!</p>
         <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem;">Anda akan dibawa ke WhatsApp group sebentar lagi...</p>
     `;
-    
+
     overlay.appendChild(messageBox);
     document.body.appendChild(overlay);
-    
+
     // Add animations to document
     if (!document.getElementById('dynamicAnimations')) {
         const style = document.createElement('style');
@@ -157,12 +200,12 @@ function redirectToWhatsApp() {
 // Add input animations
 const inputs = document.querySelectorAll('.form-group input');
 inputs.forEach(input => {
-    input.addEventListener('focus', function() {
+    input.addEventListener('focus', function () {
         this.parentElement.style.transform = 'translateY(-2px)';
         this.parentElement.style.transition = 'transform 0.25s ease-in-out';
     });
-    
-    input.addEventListener('blur', function() {
+
+    input.addEventListener('blur', function () {
         this.parentElement.style.transform = 'translateY(0)';
     });
 });
@@ -206,9 +249,9 @@ document.querySelectorAll('.benefit-card').forEach(card => {
 
 // Phone number formatting
 const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', function(e) {
+phoneInput.addEventListener('input', function (e) {
     let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
-    
+
     // Format: 01X-XXXX XXXX
     if (value.length > 0) {
         if (value.length <= 3) {
@@ -221,6 +264,8 @@ phoneInput.addEventListener('input', function(e) {
     }
 });
 
-// Console welcome message
+// Console welcome messages
 console.log('%c🎉 Welcome to MLM Platform! 🎉', 'font-size: 20px; font-weight: bold; color: #667eea;');
 console.log('%cBuilt with ❤️ for your success', 'font-size: 14px; color: #764ba2;');
+console.log('%c📊 Google Sheets Integration Ready!', 'font-size: 14px; color: #43e97b; font-weight: bold;');
+console.log('%c📝 Follow setup instructions to enable data collection', 'font-size: 12px; color: #666;');
