@@ -3,7 +3,7 @@ const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/CMVS4Jjc5xP6UAL9SMgfJS';
 
 // Google Sheets Web App URL - UPDATE THIS AFTER DEPLOYING APPS SCRIPT
 // Instructions: Replace with your Google Apps Script Web App URL after setup
-const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxTaGBimxFZGiuljYekOEL05KWiFnUpzi4kPEHe_Q8GtL-s8KDAYbsjhcfcRvET6XcB_A/exec';
 
 // Get form elements
 const form = document.getElementById('registrationForm');
