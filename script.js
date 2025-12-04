@@ -19,9 +19,10 @@ form.addEventListener('submit', function (e) {
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const country = document.querySelector('input[name="country"]:checked')?.value || '';
 
     // Validate form
-    if (!name || !email || !phone) {
+    if (!name || !email || !phone || !country) {
         alert('Sila lengkapkan semua maklumat!');
         return;
     }
@@ -37,20 +38,21 @@ form.addEventListener('submit', function (e) {
     showLoading();
 
     // Submit to Google Sheets first, then redirect to WhatsApp
-    submitToGoogleSheets(name, email, phone);
+    submitToGoogleSheets(name, email, phone, country);
 });
 
 // Submit data to Google Sheets
-function submitToGoogleSheets(name, email, phone) {
+function submitToGoogleSheets(name, email, phone, country) {
     const formData = {
         name: name,
         email: email,
         phone: phone,
+        country: country,
         timestamp: new Date().toLocaleString('ms-MY', { timeZone: 'Asia/Kuala_Lumpur' })
     };
 
     // Store locally as backup
-    storeUserData(name, email, phone);
+    storeUserData(name, email, phone, country);
 
     // Check if Google Sheets URL is configured
     if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
@@ -105,11 +107,12 @@ function hideLoading() {
 }
 
 // Store user data in localStorage
-function storeUserData(name, email, phone) {
+function storeUserData(name, email, phone, country) {
     const userData = {
         name: name,
         email: email,
         phone: phone,
+        country: country,
         timestamp: new Date().toISOString()
     };
 
