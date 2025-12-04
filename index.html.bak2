@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Platform perniagaan MLM yang adil dan menguntungkan. Daftar sekarang untuk peluang pendapatan yang lebih baik!">
+    <title>Cukup Ker? - Platform Perniagaan MLM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="main-title">cukup ker?</h1>
+        </header>
+
+        <!-- Hero Section with Newspaper -->
+        <section class="hero-section">
+            <div class="newspaper-container">
+                <div class="newspaper-image-wrapper">
+                    <img src="newspaper.jpg" alt="Realiti Ekonomi Hari Ini" class="newspaper-image">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+
+            <div class="subtitle-box">
+                <h2 class="subtitle">Cukupkah Gaji Anda?</h2>
+            </div>
+        </section>
+
+        <!-- Expenses Reality Section -->
+        <section class="expenses-section">
+            <div class="expenses-container">
+                <div class="expenses-content">
+                    <div class="expenses-image-wrapper">
+                        <img src="expenses.jpg" alt="Cukupkah Gaji Anda?" class="expenses-image">
+                    </div>
+                    <div class="expenses-text">
+                        <h3 class="expenses-title">Realiti Perbelanjaan Bulanan</h3>
+                        <p class="expenses-desc">Dengan kos sara hidup yang semakin meningkat, adakah gaji anda masih
+                            mencukupi?</p>
+                        <ul class="reality-list">
+                            <li>💸 Bil Utiliti: RM200</li>
+                            <li>🚗 Loan Kereta: RM500</li>
+                            <li>🏠 Sewa Rumah: RM400</li>
+                            <li>🍚 Makan Minum: RM300</li>
+                            <li>👶 Barangan Baby: RM200</li>
+                            <li>📚 Belanja Sekolah: RM300</li>
+                            <li>🛒 Barang Dapur: RM300</li>
+                        </ul>
+                        <div class="total-expenses">
+                            <strong>Total Minimum: RM2,200+</strong>
+                            <p>Dan ini belum termasuk emergency & savings!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Grid -->
+        <section class="benefits-section">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏠</div>
+                    <h3>Kerja Dari Rumah</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚗</div>
+                    <h3>Pendapatan Pasif</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👔</div>
+                    <h3>Flexible Time</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Target Realistik</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Pertumbuhan Berterusan</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Bonus Menarik</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>Latihan Diberikan</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Komuniti Sokongan</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Join Section -->
+        <section class="why-join-section">
+            <h2 class="section-title">Kenapa Anda Wajib Sertai Kami?</h2>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-number">01</div>
+                    <div class="feature-content">
+                        <h3>Platform Perniagaan MLM Adil & Menguntungkan</h3>
+                        <p>Platform perniagaan MLM alaf baru yang adil, telus dan menguntungkan.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">02</div>
+                    <div class="feature-content">
+                        <h3>Sistem Mudah, Untung Tinggi</h3>
+                        <p>Kami sediakan sistem, anda hanya perlu usaha.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">03</div>
+                    <div class="feature-content">
+                        <h3>Modal Rendah, Untung Tinggi</h3>
+                        <p>Pakej permulaan mampu milik serendah RM50 sahaja.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">04</div>
+                    <div class="feature-content">
+                        <h3>Bimbingan & Mentoring</h3>
+                        <p>Kelas permasaran online dan offline disediakan percuma setiap minggu. Insentif Lumayan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Komisyen ini bukan masuk sebulan je.. Tapi tiap-tiap Bulan WOW Tungggu apa lagi
+                    .... Daftar Sekarang...</h2>
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section class="form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 class="form-title">Saya Berminat Untuk Sertai</h2>
+                    <p class="form-subtitle">Isi maklumat anda di bawah untuk menyertai komuniti kami</p>
+                </div>
+
+                <form id="registrationForm" class="registration-form">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama penuh anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">No Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="01X-XXXX XXXX" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Hantar</span>
+                        <span class="btn-loader" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    <p>🔒 Maklumat anda selamat bersama kami</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Platform Perniagaan MLM. Hak Cipta Terpelihara.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
